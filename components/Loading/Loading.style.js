@@ -1,11 +1,14 @@
 import { StyleSheet } from "react-native";
 
 export const s = StyleSheet.create({
-  search: {
-    flex: 1,
-    backgroundColor: "green",
+  container: {
+    // flex: 1,
     justifyContent: "center",
     alignItems: "center",
   },
-  bookCard: {},
+  horizontal: {
+    flexDirection: "row",
+    justifyContent: "space-around",
+    padding: 10,
+  },
 });

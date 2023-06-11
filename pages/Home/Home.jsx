@@ -8,34 +8,20 @@ import { BookCard } from "../../components/BookCard/BookCard.jsx";
 import { Txt } from "../../components/Txt/Txt.jsx";
 import { Container } from "../../components/Container/Container.jsx";
 import { Searchbar } from "../../components/Searchbar/Searchbar.jsx";
+import { Loading } from "../../components/Loading/Loading.jsx";
+
 
 export function Home() {
-    // const nav = useNavigation();
+    const nav = useNavigation();
 
-    // function goToForecast(){
-    //     nav.navigate("Forecast", {city, ...weather.daily})
-    // }
-    const [users, setUsers] = useState([]);
     const [books, setBooks] = useState([]);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
       console.log("UseEffect");
       getBooks();
     }, []);
 
-    async function getUsers(){
-      await axios.get("http://localhost:4000/users", {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }).then((response) => {
-        console.log(response);
-      }).catch((error) => {
-        console.log(error);
-      }).finally(() => {
-        console.log("request completed");
-      });
-    }
 
     const APIKey = "AIzaSyDZ2-8fYAfYH2lrN6AoUWCi5vV1_z4nHuQ";
     const APIurl = `https://www.googleapis.com/books/v1/volumes?q=pride+prejudice&maxResults=10&download=epub&key=${APIKey}`;
@@ -49,37 +35,30 @@ export function Home() {
       }
     };
 
+    console.log("BAAAAAAAAMAMAMAMAMAMAMAMAMA ",books);
+
     async function searchBook(search){
       try {
+        setLoading(true);
         let {data: { items }} = await axios.get(`https://www.googleapis.com/books/v1/volumes?q=${search}&maxResults=10&download=epub&key=${APIKey}`);
         setBooks(items);
+        nav.navigate("BooksList", {books, search, loading});
+        
       } catch (error) {
         console.error(error);
+      } finally {
+        setLoading(false);
       }
     }
 
-    const bookCards = books.map((book) => {
-      return (
-        <BookCard
-          key={book.id}
-          title={book.volumeInfo.title}
-          author={book.volumeInfo.authors}
-          image={book.volumeInfo.imageLinks.thumbnail}
-        />
-      );
-    });
 
   return (
     <Container>
-      <View>
-        <Txt>Hello World</Txt>
-        <View>
+        <Txt>Search for a book</Txt>
+        <View style={s.search}>
           <Searchbar onSubmit={searchBook}/>
+          <Loading />
         </View>
-        <ScrollView>
-          {bookCards}
-        </ScrollView>
-      </View>
     </Container>
   );
 }
