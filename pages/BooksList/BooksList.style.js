@@ -4,6 +4,8 @@ export const s = StyleSheet.create({
   header: {
     flexDirection: "row",
     alignItems: "center",
+    marginHorizontal: 20,
+    marginTop: 10,
   },
   back_btn: {
     width: 30,
@@ -11,7 +13,6 @@ export const s = StyleSheet.create({
   headerTxt: {
     flex: 1,
     alignItems: "center",
-    backgroundColor: "red",
     marginRight: 30,
   },
   subtitle: {
@@ -19,5 +20,10 @@ export const s = StyleSheet.create({
   },
   forecastList: {
     marginTop: 50,
+  },
+  loading: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
   },
 });

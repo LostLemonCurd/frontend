@@ -11,10 +11,9 @@ import { Loading } from "../../components/Loading/Loading.jsx";
 export function BooksList({}) {
   const { params } = useRoute();
   const nav = useNavigation();
-  const { loading } = params.loading;
 
   console.log(params);
-
+  console.log(params.loading);
   // console.log(params.search);
   // console.log(params.books);
 
@@ -28,8 +27,8 @@ export function BooksList({}) {
     <View style={s.header}>
       {backButton}
       <View style={s.headerTxt}>
-        <Txt> Vos résultats de recherche pour "{params.search}" </Txt>
-        <Txt style={s.subtitle}> Prévisions sur les prochains jours</Txt>
+        <Txt style={s.subtitle}> Vos résultats de recherche pour :</Txt>
+        <Txt style={s.title}>{params.search}</Txt>
       </View>
     </View>
   );
@@ -51,10 +50,8 @@ export function BooksList({}) {
 
   return (
     <Container>
-      <View>
-        {backButton}
-        {loading ? <Loading /> : bookCards}
-      </View>
+      {header}
+      <View style={s.loading}>{params.loading ? <Loading /> : bookCards}</View>
     </Container>
   );
 }

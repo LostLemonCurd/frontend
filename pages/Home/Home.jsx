@@ -12,27 +12,21 @@ export function Home() {
 
   const [books, setBooks] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [booksChanged, setBooksChanged] = useState(false);
 
-  useEffect(() => {
-    // console.log("UseEffect");
-    getBooks();
-  }, []);
+  // useEffect(() => {
+  //   // console.log("UseEffect");
+  //   getBooks();
+  // }, []);
+
+  // useEffect(() => {
+
+  // }, [books]);
 
   const APIKey = "AIzaSyDZ2-8fYAfYH2lrN6AoUWCi5vV1_z4nHuQ";
-  const APIurl = `https://www.googleapis.com/books/v1/volumes?q=pride+prejudice&maxResults=10&download=epub&key=${APIKey}`;
+  // const APIurl = `https://www.googleapis.com/books/v1/volumes?q=pride+prejudice&maxResults=10&download=epub&key=${APIKey}`;
 
-  async function getBooks() {
-    try {
-      let {
-        data: { items },
-      } = await axios.get(APIurl);
-      setBooks(items);
-    } catch (error) {
-      console.error(error);
-    }
-  }
-
-  async function searchBook(search) {
+  async function getBooks(search) {
     try {
       let {
         data: { items },
@@ -40,6 +34,15 @@ export function Home() {
         `https://www.googleapis.com/books/v1/volumes?q=${search}&maxResults=10&download=epub&key=${APIKey}`
       );
       setBooks(items);
+      setLoading(false);
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  async function searchBook(search) {
+    try {
+      await getBooks(search);
       nav.navigate("BooksList", { books, search, loading });
     } catch (error) {
       console.error(error);
