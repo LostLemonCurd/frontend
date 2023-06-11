@@ -3,6 +3,7 @@ import { StyleSheet } from "react-native";
 export const s = StyleSheet.create({
   searchbar: {
     backgroundColor: "white",
+    width: "80%",
     height: 40,
     paddingLeft: 10,
     borderRadius: 20,

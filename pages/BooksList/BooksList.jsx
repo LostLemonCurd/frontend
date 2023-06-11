@@ -51,7 +51,7 @@ console.log(params.search)
       <View>
         {backButton}
         {
-            params.loading ? bookCards : <Loading />
+            params.loading ? <Loading /> : bookCards
         }
       </View>
     </Container>

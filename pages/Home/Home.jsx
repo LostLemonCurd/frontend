@@ -35,7 +35,7 @@ export function Home() {
       }
     };
 
-    console.log("BAAAAAAAAMAMAMAMAMAMAMAMAMA ",books);
+    // console.log("BAAAAAAAAMAMAMAMAMAMAMAMAMA ",books);
 
     async function searchBook(search){
       try {
@@ -54,11 +54,12 @@ export function Home() {
 
   return (
     <Container>
-        <Txt>Search for a book</Txt>
-        <View style={s.search}>
-          <Searchbar onSubmit={searchBook}/>
-          <Loading />
-        </View>
+      <View style={s.title}>
+        <Txt style={{fontSize: 40}}>Search for a book</Txt>
+      </View>
+      <View style={s.search}>
+        <Searchbar onSubmit={searchBook}/>
+      </View>
     </Container>
   );
 }
