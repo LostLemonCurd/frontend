@@ -7,13 +7,16 @@ import { useState, useEffect, useContext } from "react";
 import { BookCard } from "../../components/BookCard/BookCard.jsx";
 import { Container } from "../../components/Container/Container.jsx";
 import { Loading } from "../../components/Loading/Loading.jsx";
+import { LoadingContext } from "../../contexts/LoadingContext.jsx";
 
 export function BooksList({}) {
   const { params } = useRoute();
   const nav = useNavigation();
+  // Access the loading state from the context
+  const { loading } = useContext(LoadingContext);
+  console.log("loading", loading);
 
-  console.log(params);
-  console.log(params.loading);
+  console.log("params", params);
   // console.log(params.search);
   // console.log(params.books);
 
@@ -51,7 +54,7 @@ export function BooksList({}) {
   return (
     <Container>
       {header}
-      <View style={s.loading}>{params.loading ? <Loading /> : bookCards}</View>
+      <View style={s.loading}>{loading ? <Loading /> : bookCards}</View>
     </Container>
   );
 }

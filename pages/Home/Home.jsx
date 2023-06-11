@@ -1,17 +1,18 @@
 import { View } from "react-native";
 import { s } from "./Home.style.js";
 import { useNavigation } from "@react-navigation/native";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import { Txt } from "../../components/Txt/Txt.jsx";
 import { Container } from "../../components/Container/Container.jsx";
 import { Searchbar } from "../../components/Searchbar/Searchbar.jsx";
+import { LoadingContext } from "../../contexts/LoadingContext.jsx";
 
 export function Home() {
   const nav = useNavigation();
 
+  const { loading, setLoading } = useContext(LoadingContext);
   const [books, setBooks] = useState([]);
-  const [loading, setLoading] = useState(true);
   const [booksChanged, setBooksChanged] = useState(false);
 
   // useEffect(() => {
@@ -34,7 +35,6 @@ export function Home() {
         `https://www.googleapis.com/books/v1/volumes?q=${search}&maxResults=10&download=epub&key=${APIKey}`
       );
       setBooks(items);
-      setLoading(false);
     } catch (error) {
       console.error(error);
     }
@@ -42,12 +42,15 @@ export function Home() {
 
   async function searchBook(search) {
     try {
+      setLoading(true);
       await getBooks(search);
-      nav.navigate("BooksList", { books, search, loading });
     } catch (error) {
       console.error(error);
     } finally {
-      setLoading(false);
+      if (books.length !== 0) {
+        setLoading(false);
+      }
+      nav.navigate("BooksList", { books, search });
     }
   }
 
