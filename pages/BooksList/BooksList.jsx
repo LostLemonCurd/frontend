@@ -36,11 +36,12 @@ export function BooksList({}) {
   const bookCards = (
     <ScrollView>
       {params.books?.map((book) => {
+        const author = book.volumeInfo.authors?.join(", ");
         return (
           <BookCard
             key={book.id}
             title={book.volumeInfo.title}
-            author={book.volumeInfo.authors}
+            author={author}
             image={book.volumeInfo.imageLinks.thumbnail}
           />
         );

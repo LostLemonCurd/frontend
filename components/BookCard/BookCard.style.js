@@ -15,7 +15,15 @@ export const s = StyleSheet.create({
     width: 128,
     height: 190,
   },
-  info: {
+  title: {
+    marginTop: 10,
+    fontWeight: "bold",
+    fontSize: 16,
+    color: "#4F6272",
+  },
+  author: {
+    fontSize: 14,
+    color: "#4F6272",
     fontWeight: "bold",
   },
 });
