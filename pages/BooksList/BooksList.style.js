@@ -11,6 +11,7 @@ export const s = StyleSheet.create({
   headerTxt: {
     flex: 1,
     alignItems: "center",
+    backgroundColor: "red",
     marginRight: 30,
   },
   subtitle: {
