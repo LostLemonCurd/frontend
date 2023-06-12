@@ -13,7 +13,7 @@ export function Home() {
 
   const { loading, setLoading } = useContext(LoadingContext);
   const [books, setBooks] = useState([]);
-  const [booksChanged, setBooksChanged] = useState(false);
+  console.log("HOOOOOOOOME boooooooooks", books);
 
   // useEffect(() => {
   //   // console.log("UseEffect");
@@ -21,7 +21,9 @@ export function Home() {
   // }, []);
 
   // useEffect(() => {
-
+  //   if (books.length !== 0) {
+  //     setLoading(false);
+  //   }
   // }, [books]);
 
   const APIKey = "AIzaSyDZ2-8fYAfYH2lrN6AoUWCi5vV1_z4nHuQ";
@@ -32,7 +34,7 @@ export function Home() {
       let {
         data: { items },
       } = await axios.get(
-        `https://www.googleapis.com/books/v1/volumes?q=${search}&maxResults=10&download=epub&key=${APIKey}`
+        `https://www.googleapis.com/books/v1/volumes?q=${search}&maxResults=1&download=epub&key=${APIKey}`
       );
       setBooks(items);
     } catch (error) {
@@ -43,14 +45,18 @@ export function Home() {
   async function searchBook(search) {
     try {
       setLoading(true);
+      console.log("SEAAAARCH", search);
       await getBooks(search);
     } catch (error) {
       console.error(error);
     } finally {
       if (books.length !== 0) {
         setLoading(false);
+        console.log("NAVUGATE", books);
+        nav.navigate("BooksList", { books, search });
+      } else {
+        console.log("ain't nothing in the books mate", search);
       }
-      nav.navigate("BooksList", { books, search });
     }
   }
 

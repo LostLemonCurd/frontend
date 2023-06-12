@@ -9,16 +9,12 @@ import { Container } from "../../components/Container/Container.jsx";
 import { Loading } from "../../components/Loading/Loading.jsx";
 import { LoadingContext } from "../../contexts/LoadingContext.jsx";
 
-export function BooksList({}) {
+export function BooksList() {
   const { params } = useRoute();
   const nav = useNavigation();
   // Access the loading state from the context
   const { loading } = useContext(LoadingContext);
-  console.log("loading", loading);
-
-  console.log("params", params);
-  // console.log(params.search);
-  // console.log(params.books);
+  console.log("BOOKSLIST params", params);
 
   const backButton = (
     <TouchableOpacity style={s.back_btn} onPress={() => nav.goBack()}>
