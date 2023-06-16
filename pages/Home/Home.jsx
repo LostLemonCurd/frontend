@@ -1,4 +1,4 @@
-import { View } from "react-native";
+import { View, Image } from "react-native";
 import { s } from "./Home.style.js";
 import { useNavigation } from "@react-navigation/native";
 import { useState, useEffect, useContext } from "react";
@@ -7,6 +7,7 @@ import { Txt } from "../../components/Txt/Txt.jsx";
 import { Container } from "../../components/Container/Container.jsx";
 import { Searchbar } from "../../components/Searchbar/Searchbar.jsx";
 import { LoadingContext } from "../../contexts/LoadingContext.jsx";
+import B from "../../assets/B.png";
 
 export function Home() {
   const nav = useNavigation();
@@ -47,9 +48,10 @@ export function Home() {
   }
 
   return (
-    <Container>
+    <Container style={s.container}>
       <View style={s.title}>
-        <Txt style={{ fontSize: 40 }}>Search for a book</Txt>
+        <Txt style={{ fontSize: 40, color: "white" }}>Search for a book</Txt>
+        <Image source={B} />
       </View>
       <View style={s.search}>
         <Searchbar onSubmit={searchBook} />

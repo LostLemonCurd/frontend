@@ -16,8 +16,12 @@ export const s = StyleSheet.create({
     alignItems: "center",
     marginRight: 30,
   },
+  title: {
+    fontSize: 16,
+    fontWeight: "bold",
+  },
   subtitle: {
-    fontSize: 14,
+    fontSize: 16,
   },
   loading: {
     flex: 1,
