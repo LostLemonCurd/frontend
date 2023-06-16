@@ -1,4 +1,4 @@
-import { View, Image } from "react-native";
+import { View, Image, Alert } from "react-native";
 import { s } from "./Home.style.js";
 import { useNavigation } from "@react-navigation/native";
 import { useState, useEffect, useContext } from "react";
@@ -11,6 +11,7 @@ import B from "../../assets/B.png";
 
 export function Home() {
   const nav = useNavigation();
+  let inputError = null;
 
   const { loading, setLoading } = useContext(LoadingContext);
   // console.log("HOOOOOOOOME boooooooooks", books);
@@ -34,9 +35,13 @@ export function Home() {
     let books = [];
     try {
       setLoading(true);
-      books = await getBooks(search);
+      if (search !== "") {
+        books = await getBooks(search);
+      } else {
+        throw new Error("Vous devez entrer un titre de livre");
+      }
     } catch (error) {
-      console.error(error);
+      Alert.alert(error.message);
     } finally {
       if (books.length !== 0) {
         setLoading(false);
