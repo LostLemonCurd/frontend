@@ -18,16 +18,12 @@ export function DetailCard({ book }) {
     categories,
   } = volumeInfo;
 
-  console.log("averageRating", book.volumeInfo.averageRating);
-  console.log("ratingsCount", book.volumeInfo.ratingsCount);
-
   let rating;
   if (book.volumeInfo.averageRating) {
     rating = getRatingImage(book.volumeInfo.averageRating);
   } else {
     rating = null;
   }
-  console.log("rating", rating);
   const ratingComponent = (
     <View style={s.ratingContainer}>
       <Image source={rating?.image} />

@@ -11,7 +11,7 @@ import B from "../../assets/B.png";
 
 export function Home() {
   const nav = useNavigation();
-  let inputError = null;
+  const [inError, setInError] = useState(null);
 
   const { loading, setLoading } = useContext(LoadingContext);
   // console.log("HOOOOOOOOME boooooooooks", books);
@@ -41,7 +41,7 @@ export function Home() {
         throw new Error("Vous devez entrer un titre de livre");
       }
     } catch (error) {
-      Alert.alert(error.message);
+      setInError(error.message);
     } finally {
       if (books.length !== 0) {
         setLoading(false);
@@ -60,6 +60,7 @@ export function Home() {
       </View>
       <View style={s.search}>
         <Searchbar onSubmit={searchBook} />
+        {inError ? <Txt style={s.error}>{inError}</Txt> : null}
       </View>
     </Container>
   );

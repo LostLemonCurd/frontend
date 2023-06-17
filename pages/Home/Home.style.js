@@ -9,6 +9,11 @@ export const s = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
   },
+  error: {
+    color: "red",
+    marginTop: 10,
+    fontSize: 16,
+  },
   search: {
     justifyContent: "center",
     alignItems: "center",
