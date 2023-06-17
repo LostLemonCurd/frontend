@@ -2,12 +2,12 @@ import { StyleSheet } from "react-native";
 
 export const s = StyleSheet.create({
   container: {
-    backgroundColor: "black",
+    backgroundColor: "#F6E8EA",
   },
-  logo: {},
   title: {
     justifyContent: "center",
     alignItems: "center",
+    marginBottom: 20,
   },
   error: {
     color: "red",

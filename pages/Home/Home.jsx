@@ -40,11 +40,15 @@ export function Home() {
       } else {
         throw new Error("Vous devez entrer un titre de livre");
       }
+      if (books === undefined) {
+        throw new Error("Aucun livre ne correspond à votre recherche");
+      }
     } catch (error) {
       setInError(error.message);
     } finally {
-      if (books.length !== 0) {
+      if (books?.length !== 0 && books !== undefined) {
         setLoading(false);
+        setInError(null);
         nav.navigate("BooksList", { books, search });
       } else {
         console.log("ain't nothing in the books mate", search);
@@ -55,7 +59,7 @@ export function Home() {
   return (
     <Container style={s.container}>
       <View style={s.title}>
-        <Txt style={{ fontSize: 40, color: "white" }}>Search for a book</Txt>
+        <Txt style={{ fontSize: 40 }}>Search for a book</Txt>
         <Image source={B} />
       </View>
       <View style={s.search}>
