@@ -31,6 +31,14 @@ export function DetailCard({ book }) {
     </View>
   );
 
+  const readOnline = (
+    <View style={s.online}>
+      <Text onPress={() => Linking.openURL(`${webReaderLink}`)}>
+        Lire en ligne
+      </Text>
+    </View>
+  );
+
   return (
     <ScrollView>
       <View style={s.detailContainer}>
@@ -46,11 +54,7 @@ export function DetailCard({ book }) {
           <Txt style={s.text}>{pageCount} pages</Txt>
         </View>
       </View>
-      <View style={s.online}>
-        <Text onPress={() => Linking.openURL(`${webReaderLink}`)}>
-          Lire en ligne
-        </Text>
-      </View>
+      {book.accessInfo.webReaderLink ? readOnline : null}
       <Txt style={s.description}>
         {description ? description : "Ce livre ne contient pas de description"}
       </Txt>
