@@ -11,6 +11,7 @@ import { s } from "./Register.style.js";
 import { useState, useEffect } from "react";
 import { useNavigation } from "@react-navigation/native";
 import { Container } from "../../components/Container/Container.jsx";
+import { FormInput } from "../../components/FormInput/FormInput.jsx";
 
 export function Register() {
   const nav = useNavigation();
@@ -50,36 +51,27 @@ export function Register() {
       <View style={s.container}>
         {header}
         <View style={s.form}>
-          <TextInput
-            style={s.inputText}
+          <FormInput
             placeholder={"Username"}
             value={username}
-            onChangeText={(text) => setUsername(text)}
+            setFunction={setUsername}
           />
-          <TextInput
-            style={s.inputText}
+          <FormInput
             placeholder={"Mot de Passe"}
             value={password}
-            onChangeText={(text) => setPassword(text)}
+            setFunction={setPassword}
           />
-          <TextInput
-            style={s.inputText}
+          <FormInput
             placeholder={"Prénom"}
             value={firstname}
-            onChangeText={(text) => setFirstname(text)}
+            setFunction={setFirstname}
           />
-          <TextInput
-            style={s.inputText}
+          <FormInput
             placeholder={"Nom"}
             value={lastname}
-            onChangeText={(text) => setLastname(text)}
+            setFunction={setLastname}
           />
-          <TextInput
-            style={s.inputText}
-            placeholder={"Age"}
-            value={age}
-            onChangeText={(text) => setAge(text)}
-          />
+          <FormInput placeholder={"Age"} value={age} setFunction={setAge} />
         </View>
         <Pressable style={[s.buttonOpen, s.button]} onPress={handleLogin}>
           <Text style={{ color: "black", fontWeight: "bold" }}>Register</Text>
