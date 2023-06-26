@@ -1,29 +1,27 @@
 import { StyleSheet } from "react-native";
 
 export const s = StyleSheet.create({
-  container: {
-    backgroundColor: "#F6E8EA",
-  },
-  title: {
-    justifyContent: "center",
-    alignItems: "center",
-    marginBottom: 20,
-  },
-  error: {
-    color: "red",
-    marginTop: 10,
-    fontSize: 16,
-  },
   search: {
-    gap: 20,
     justifyContent: "center",
     alignItems: "center",
   },
   centeredView: {
+    backgroundColor: "#F6E8EA",
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
     marginTop: 22,
+    gap: 20,
+    paddingHorizontal: 40,
+  },
+  inputTitle: {
+    alignSelf: "flex-start",
+  },
+  inputText: {
+    backgroundColor: "#fff",
+    borderRadius: 12,
+    padding: 10,
+    width: 300,
   },
   modalView: {
     margin: 20,
@@ -41,17 +39,16 @@ export const s = StyleSheet.create({
     elevation: 5,
   },
   button: {
-    marginTop: 20,
-    borderRadius: 20,
+    borderRadius: 12,
     padding: 10,
-    elevation: 2,
+    paddingHorizontal: 20,
     alignSelf: "center",
   },
   buttonOpen: {
-    backgroundColor: "#F194FF",
+    backgroundColor: "#5ee863",
   },
   buttonClose: {
-    backgroundColor: "#2196F3",
+    backgroundColor: "#e03b28",
   },
   textStyle: {
     color: "white",

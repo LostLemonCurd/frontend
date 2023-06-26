@@ -15,6 +15,7 @@ import { Txt } from "../../components/Txt/Txt.jsx";
 import { Container } from "../../components/Container/Container.jsx";
 import { Searchbar } from "../../components/Searchbar/Searchbar.jsx";
 import { LoadingContext } from "../../contexts/LoadingContext.jsx";
+import { Login } from "../../components/Login/Login.jsx";
 import B from "../../assets/B.png";
 
 export function Home() {
@@ -106,6 +107,7 @@ export function Home() {
         >
           <Text style={s.textStyle}>Comment ça marche?</Text>
         </Pressable>
+        <Login />
       </View>
     </Container>
   );

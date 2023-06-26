@@ -5,6 +5,7 @@ import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 import { Home } from "./pages/Home/Home";
 import { BooksList } from "./pages/BooksList/BooksList";
 import { BookDetails } from "./pages/BookDetails/BookDetails";
+import { Register } from "./pages/Register/Register";
 import { LoadingProvider } from "./contexts/LoadingContext.jsx";
 import { useContext } from "react";
 const Stack = createNativeStackNavigator();
@@ -23,6 +24,7 @@ export default function App() {
           <Stack.Screen component={Home} name="Home" />
           <Stack.Screen component={BooksList} name="BooksList" />
           <Stack.Screen component={BookDetails} name="BookDetails" />
+          <Stack.Screen component={Register} name="Register" />
         </Stack.Navigator>
       </NavigationContainer>
     </LoadingProvider>
